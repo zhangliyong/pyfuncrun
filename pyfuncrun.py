@@ -40,7 +40,7 @@ def main():
     func_args = inspect.getargspec(func).args
     func_args_values = sys.argv[2:2+len(func_args)]
     sys.argv[1:] = sys.argv[2+len(func_args):]
-    func(*func_args_values)
+    return func(*func_args_values)
 
 
 if __name__ == '__main__':

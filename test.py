@@ -5,15 +5,59 @@ A couple of functions for pyfuncrun to test
 from __future__ import (absolute_import, print_function,
                         unicode_literals)
 import sys
+import unittest
+from pyfuncrun import main
 
 
-def print_hello():
-    print("Hello, pyfuncrun")
+def return_true():
+    return True
+
+def return_false():
+    return False
 
 
-def print_argv():
-    print(sys.argv)
+def return_sys_argv():
+    return sys.argv
 
 
 def func_with_args(a, b):
-    print(a + b)
+    return ((a + b), sys.argv)
+
+
+def func_with_kwargs(a, b, c=1):
+    return ((a + b + c), sys.argv)
+
+
+class TestPyFuncRun(unittest.TestCase):
+
+    def setUp(self):
+        sys.argv = ['pyfuncrun', 'path.to.func', 1, 2, 3, 4]
+
+    def test_true(self):
+        sys.argv[1] = 'test.return_true'
+        self.assertTrue(main())
+
+    def test_false(self):
+        sys.argv[1] = 'test.return_false'
+        self.assertFalse(main())
+
+    def test_sys_argv(self):
+        sys.argv[1] = 'test.return_sys_argv'
+
+        before_argv = sys.argv[:]
+        before_argv.pop(1)
+        self.assertEqual(before_argv, main())
+
+    def test_args(self):
+        sys.argv[1] = 'test.func_with_args'
+
+        before_argv = sys.argv[:]
+        before_argv[1:4] = []
+        self.assertEqual((3, before_argv), main())
+
+    def test_kwargs(self):
+        sys.argv[1] = 'test.func_with_kwargs'
+
+        before_argv = sys.argv[:]
+        before_argv[1:5] = []
+        self.assertEqual((6, before_argv), main())
