@@ -4,5 +4,9 @@ python:
   - "3.2"
   - "3.3"
   - "3.4"
-# command to run tests
-script: nosetests
+install:
+  - pip install coveralls
+script: 
+  - nosetests  --with-coverage --cover-package=pyfuncrun
+after_success:
+  - coveralls
