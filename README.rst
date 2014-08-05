@@ -4,6 +4,10 @@ pyfuncrun
 Run a python function in a module from command line and shift ``sys.argv``,
 so function can parse ``sys.argv`` properly.
 
+.. image:: https://pypip.in/download/pyfuncrun/badge.svg
+    :target: https://pypi.python.org/pypi/pyfuncrun/
+    :alt: Downloads
+
 Install
 ---------
 
