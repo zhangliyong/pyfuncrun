@@ -35,10 +35,10 @@ func.py::
 Run::
 
     $ pyfuncrun func.print_sys_argv 1 2
-    [1, 2]
+    ['pyfuncrun', 1, 2]
 
     $ pyfuncrun func.func_with_args 1 2
-    (3, [])
+    (3, ['pyfuncrun'])
 
     $ pyfuncrun func.func_with_kwargs 1 2 3 4
-    (6, [4])
+    (6, ['pyfuncrun', 4])

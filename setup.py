@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='pyfuncrun',
-    version='0.1.3',
+    version='0.1.4',
     py_modules=['pyfuncrun'],
     entry_points={
         'console_scripts': [
