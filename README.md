@@ -27,6 +27,7 @@ func.py:
     def func_with_kwargs(a, b, c=1):
         print ((a + b + c), sys.argv)
 
+Run:
 
     $ pyfuncrun func.print_sys_argv 1 2
     [1, 2]
