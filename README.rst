@@ -1,17 +1,20 @@
 pyfuncrun
 =========
 
-Run a python function in a module from command line
+Run a python function in a module from command line and shift ``sys.argv``,
+so function can parse ``sys.argv`` properly.
 
 Install
 ---------
-::
+
+.. code-block:: bash
 
     $ pip install pyfuncrun
 
 Usage
 -----
-::
+
+.. code-block:: bash
 
     $ pyfuncrun <path.to.func> <func arguments> <arguments for func to parse in sys.argv>
 
@@ -19,7 +22,9 @@ Usage
 Example
 -------
 
-func.py::
+func.py:
+
+.. code-block:: python
 
     def print_sys_argv():
         print sys.argv
@@ -32,7 +37,9 @@ func.py::
     def func_with_kwargs(a, b, c=1):
         print ((a + b + c), sys.argv)
 
-Run::
+Run:
+
+.. code-block:: bash
 
     $ pyfuncrun func.print_sys_argv 1 2
     ['pyfuncrun', 1, 2]
