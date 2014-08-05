@@ -9,6 +9,9 @@ so function can parse ``sys.argv`` properly.
 .. image:: https://pypip.in/download/pyfuncrun/badge.svg
     :target: https://pypi.python.org/pypi/pyfuncrun/
     :alt: Downloads
+.. image:: https://coveralls.io/repos/zhangliyong/pyfuncrun/badge.png?branch=master
+  :target: https://coveralls.io/r/zhangliyong/pyfuncrun?branch=master
+
 
 Install
 ---------
