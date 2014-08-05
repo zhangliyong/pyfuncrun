@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='pyfuncrun',
-    version='0.1.1',
+    version='0.1.3',
     py_modules=['pyfuncrun'],
     entry_points={
         'console_scripts': [
@@ -14,4 +14,5 @@ setup(
     author='Lyon Zhang',
     author_email='lyzhang87@gmail.com',
     description='A tool to run a python function in a module from command line',
+    long_description=open('README.rst').read()
 )
