@@ -35,6 +35,9 @@ func.py:
 
 .. code-block:: python
 
+    import sys
+
+
     def print_sys_argv():
         print sys.argv
 
