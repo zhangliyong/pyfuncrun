@@ -28,6 +28,13 @@ def func_with_kwargs(a, b, c=1):
     return ((a + b + c), sys.argv)
 
 
+class ClassCall(object):
+
+    def __call__(self):
+        return (True, sys.argv)
+
+class_call = ClassCall()
+
 class TestPyFuncRun(unittest.TestCase):
 
     def setUp(self):
@@ -61,3 +68,10 @@ class TestPyFuncRun(unittest.TestCase):
         before_argv = sys.argv[:]
         before_argv[1:5] = []
         self.assertEqual((6, before_argv), main())
+
+    def test_non_func(self):
+        sys.argv[1] = 'test.class_call'
+
+        before_argv = sys.argv[:]
+        before_argv[1:2] = []
+        self.assertEqual((True, before_argv), main())

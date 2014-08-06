@@ -36,8 +36,10 @@ def main():
     func = import_attribute(func_str)
 
     #Get func arguments values and shfit command line arguments,
-    #so func can parse sys.argv properly.
-    func_args = inspect.getargspec(func).args
+    #so func can parse sys.argv properly. If func is not a function,
+    #just ignore the arguments, and call func directly.
+    func_args = (inspect.getargspec(func).args
+            if inspect.isfunction(func) else [])
     func_args_values = sys.argv[2:2+len(func_args)]
     sys.argv[1:] = sys.argv[2+len(func_args):]
     return func(*func_args_values)
