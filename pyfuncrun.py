@@ -27,6 +27,20 @@ def import_attribute(name):
     return getattr(module, attribute)
 
 
+def get_func_args(func):
+    """
+    Get func arguments values and shfit command line arguments,
+    so func can parse sys.argv properly. If func is not a function,
+    just ignore the calling arguments, and call func directly.
+    """
+    func_args = (inspect.getargspec(func).args
+            if inspect.isfunction(func) else [])
+    func_args_values = sys.argv[2:2+len(func_args)]
+    sys.argv[1:] = sys.argv[2+len(func_args):]
+
+    return func_args_values
+
+
 def main():
     """Entry function"""
     #Make current working directory as the first python module search path
@@ -35,13 +49,8 @@ def main():
     func_str = sys.argv[1]
     func = import_attribute(func_str)
 
-    #Get func arguments values and shfit command line arguments,
-    #so func can parse sys.argv properly. If func is not a function,
-    #just ignore the arguments, and call func directly.
-    func_args = (inspect.getargspec(func).args
-            if inspect.isfunction(func) else [])
-    func_args_values = sys.argv[2:2+len(func_args)]
-    sys.argv[1:] = sys.argv[2+len(func_args):]
+    func_args_values = get_func_args(func)
+
     return func(*func_args_values)
 
 
