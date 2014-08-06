@@ -12,6 +12,7 @@ from pyfuncrun import main
 def return_true():
     return True
 
+
 def return_false():
     return False
 
@@ -33,7 +34,9 @@ class ClassCall(object):
     def __call__(self):
         return (True, sys.argv)
 
+
 class_call = ClassCall()
+
 
 class TestPyFuncRun(unittest.TestCase):
 
